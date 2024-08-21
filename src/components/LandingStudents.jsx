@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const descriptionData = {
   "default": "United, we <strong>Celestial Kins</strong> form an unstoppable cosmic force achieving greatness beyond mere ideas.",
@@ -53,15 +54,15 @@ const LandingStudents = () => {
     const membersToShow = findMembersByCategory(category);
 
   return (
-    <main className="min-h-[800px] py-12 px-28 bg-gradient-to-b from-[#42235A] to-[#8D4AC0] text-white">
+    <main className="min-h-[800px] py-12 px-8 lg:px-28 bg-gradient-to-b from-[#42235A] to-[#8D4AC0] text-white">
       <div className="max-w-[512px]">
-        <p className="text-[37.6px] font-bold mb-2">Greet the Quatro Celestials:</p>
+        <p className="text-[28px] md:text-[37.6px] font-bold mb-2">Greet the Quatro Celestials:</p>
         <p className="text-justify text-sm font-normal">Our diverse TecnoQuatro Extraterrestrials transcends boundaries, fusing celestial talents.</p>
         <p className="text-justify text-sm font-normal mt-5" dangerouslySetInnerHTML={{ __html: descriptionData[category] || descriptionData.default }} />
       </div>
 
-      <nav className="mt-2">
-        <ul className="flex pt-7 gap-4 text-[1.125rem] font-bold flex-wrap">
+      <nav className="mt-4 md:mt-2">
+        <ul className="flex flex-wrap gap-4 text-[1.125rem] font-bold">
           <li className={`cursor-pointer ${category === 'All' ? 'text-[#EBE331] underline' : ''}`} onClick={() => handleCategoryClick('All')}>All</li>
           <li className={`cursor-pointer ${category === 'Solar' ? 'text-[#FFAA05] underline' : ''}`} onClick={() => handleCategoryClick('Solar')}>Solar</li>
           <li className={`cursor-pointer ${category === 'Nebula' ? 'text-[#FB4BFF] underline' : ''}`} onClick={() => handleCategoryClick('Nebula')}>Nebula</li>
@@ -71,17 +72,26 @@ const LandingStudents = () => {
         </ul>
       </nav>
 
-      <div className="grid grid-cols-6 gap-8 mt-7">
-        {membersToShow.map((student, index) => (
-            <div key={index} className="flex flex-col items-center justify-center p-5">
-              <img src={student.img} alt='' className="w-[170px] h-[170px] rounded-full object-cover" />
-              <div className="mt-5 text-center text-white text-sm font-normal">
-                <p className="font-bold mb-1">{student.name}</p>
-                <p>{category === 'All' ? student.roles.join(', ') : student.roles.filter(role => student.categories.includes(category)).join(', ')}</p>
-              </div>
-          </div>
-        ))}
-      </div>
+      <AnimatePresence mode='wait'>
+        <motion.div
+          key={category}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.3 }}
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-8 mt-7"
+        >
+          {membersToShow.map((student, index) => (
+              <div key={index} className="flex flex-col items-center justify-center">
+                <img src={student.img} alt='' className="w-[170px] h-[170px] sm:w-[140px] sm:h-[140px] md:w-[170px] md:h-[170px] rounded-full object-cover" />
+                <div className="mt-3 md:mt-5 text-center text-white text-xs sm:text-sm font-normal">
+                  <p className="font-bold mb-1">{student.name}</p>
+                  <p>{category === 'All' ? student.roles.join(', ') : student.roles.filter(role => student.categories.includes(category)).join(', ')}</p>
+                </div>
+            </div>
+          ))}
+        </motion.div>
+      </AnimatePresence>
     </main>
   )
 }
