@@ -2,134 +2,177 @@
     {
         "name": "Joshua Mistal",
         "img": "/images/students/joshua.jpg",
-        "roles": ["President", "Discrete Math", "OOP"],
-        "categories": ["Solar", "Vortex", "Lunar"]
+        "roles": ["President", "DM", "OOP"],
+        "categories": ["Solar", "Vortex", "Lunar"],
+        "img_urls": ["/images/students/joshua.jpg"],
+        "description": "Joshua Mistal is the President of the organization. He is also the Director of Marketing and is currently taking Object-Oriented Programming. He is a member of Solar, Vortex, and Lunar."
     },
     {
         "name": "Karylle Quinto",
         "img": "/images/students/karylle.jpg",
         "roles": ["Vice President", "CHF"],
-        "categories": ["Solar", "Vortex"]
+        "categories": ["Solar", "Vortex"],
+        "img_urls": ["/images/students/karylle.jpg"],
+        "description": "Karylle Quinto is the Vice President and also the Chairperson of Finance. She actively participates in both Solar and Vortex."
     },
     {
         "name": "Jasmin Ivy Fedilo",
         "img": "/images/students/jasmin.jpg",
         "roles": ["Secretary"],
-        "categories": ["Solar"]
+        "categories": ["Solar"],
+        "img_urls": ["/images/students/jasmin.jpg"],
+        "description": "Jasmin Ivy Fedilo serves as the Secretary of the organization and is dedicated to the Solar category."
     },
     {
         "name": "Rachelle Cabrera",
         "img": "/images/students/rachelle.jpg",
         "roles": ["Assistant Secretary"],
-        "categories": ["Solar"]
+        "categories": ["Solar"],
+        "img_urls": ["/images/students/rachelle.jpg"],
+        "description": "Rachelle Cabrera assists the Secretary and is involved in the Solar category."
     },
     {
         "name": "Sweet Caroline Quiros",
         "img": "/images/students/sweet-caroline.jpg",
         "roles": ["Treasurer"],
-        "categories": ["Solar"]
+        "categories": ["Solar"],
+        "img_urls": ["/images/students/sweet-caroline.jpg"],
+        "description": "Sweet Caroline Quiros is the Treasurer responsible for managing finances within the Solar category."
     },
     {
         "name": "Alyssa Loque",
         "img": "/images/students/alyssa.jpg",
         "roles": ["Auditor"],
-        "categories": ["Solar"]
+        "categories": ["Solar"],
+        "img_urls": ["/images/students/alyssa.jpg"],
+        "description": "Alyssa Loque is the Auditor for the Solar category, ensuring transparency and accuracy in financial matters."
     },
     {
         "name": "Dave Balbin",
         "img": "/images/students/dave.jpg",
         "roles": ["PIO/PRO"],
-        "categories": ["Solar"]
+        "categories": ["Solar"],
+        "img_urls": ["/images/students/dave.jpg"],
+        "description": "Dave Balbin handles public information and relations for the Solar category."
     },
     {
         "name": "Lawrence Alferez",
         "img": "/images/students/lawrence.jpg",
         "roles": ["PIO/PRO", "CWTS 2"],
-        "categories": ["Solar", "Vortex"]
+        "categories": ["Solar", "Vortex"],
+        "img_urls": ["/images/students/lawrence.jpg"],
+        "description": "Lawrence Alferez manages public information and relations and is also involved in CWTS 2, contributing to both Solar and Vortex."
     },
     {
         "name": "Ian Kylle Caones",
         "img": "/images/students/ian.jpg",
         "roles": ["Graphics Specialists", "Calculus 2"],
-        "categories": ["Nebula", "Vortex"]
+        "categories": ["Nebula", "Vortex"],
+        "img_urls": ["/images/students/ian.jpg"],
+        "description": "Ian Kylle Caones specializes in graphics and is taking Calculus 2, participating in Nebula and Vortex."
     },
     {
         "name": "David Bato-Bato",
         "img": "/images/students/david.jpg",
         "roles": ["Social Media Developer", "Developer"],
-        "categories": ["Nebula", "Lunar"]
+        "categories": ["Nebula", "Lunar"],
+        "img_urls": ["/images/students/david.jpg", "/images/students/jasmin.jpg"],
+        "description": "David Bato-Bato is a Social Media Developer and Developer, contributing to Nebula and Lunar categories."
     },
     {
         "name": "Joanne Silmaro",
         "img": "/images/students/joanne.jpg",
         "roles": ["Write-ups"],
-        "categories": ["Nebula"]
+        "categories": ["Nebula"],
+        "img_urls": ["/images/students/joanne.jpg"],
+        "description": "Joanne Silmaro focuses on write-ups for the Nebula category."
     },
     {
         "name": "Japheth Tibor",
         "img": "/images/students/japheth.jpg",
-        "roles": ["Write-ups", "Phsyics for Engineers"],
-        "categories": ["Nebula", "Vortex"]
+        "roles": ["Write-ups", "Physics for Engineers"],
+        "categories": ["Nebula", "Vortex"],
+        "img_urls": ["/images/students/japheth.jpg"],
+        "description": "Japheth Tibor handles write-ups and is studying Physics for Engineers, contributing to Nebula and Vortex."
     },
     {
         "name": "Marc Rohann Ching",
         "img": "/images/students/marc.jpg",
         "roles": ["Social Media Moderator", "Discord Moderator"],
-        "categories": ["Nebula", "Stardust"]
+        "categories": ["Nebula", "Stardust"],
+        "img_urls": ["/images/students/marc.jpg"],
+        "description": "Marc Rohann Ching moderates social media and Discord for Nebula and Stardust."
     },
     {
         "name": "Edward Borboran",
         "img": "/images/students/edward.jpg",
         "roles": ["Social Media Moderator", "Discord Moderator"],
-        "categories": ["Nebula", "Stardust"]
+        "categories": ["Nebula", "Stardust"],
+        "img_urls": ["/images/students/edward.jpg"],
+        "description": "Edward Borboran is a Social Media and Discord Moderator for Nebula and Stardust."
     },
     {
         "name": "Nicole Marquez",
         "img": "/images/students/nicole.jpg",
         "roles": ["Documentation Officer"],
-        "categories": ["Stardust"]
+        "categories": ["Stardust"],
+        "img_urls": ["/images/students/nicole.jpg"],
+        "description": "Nicole Marquez manages documentation for the Stardust category."
     },
     {
         "name": "Shai Federick Base",
         "img": "/images/students/shai.jpg",
         "roles": ["Documentation Officer"],
-        "categories": ["Stardust"]
+        "categories": ["Stardust"],
+        "img_urls": ["/images/students/shai.jpg"],
+        "description": "Shai Federick Base is also a Documentation Officer working within the Stardust category."
     },
     {
         "name": "Xian Patanao",
         "img": "/images/students/xian.jpg",
         "roles": ["Irregular Student Affairs Assistant"],
-        "categories": ["Vortex"]
+        "categories": ["Vortex"],
+        "img_urls": ["/images/students/xian.jpg"],
+        "description": "Xian Patanao assists with irregular student affairs in the Vortex category."
     },
     {
         "name": "Jhastine Breta",
         "img": "/images/students/jhastine.jpg",
         "roles": ["Engineering Data Analysis"],
-        "categories": ["Vortex"]
+        "categories": ["Vortex"],
+        "img_urls": ["/images/students/jhastine.jpg"],
+        "description": "Jhastine Breta focuses on Engineering Data Analysis and contributes to the Vortex category."
     },
     {
         "name": "Francesca Aldea",
         "img": "/images/students/francesca.jpg",
         "roles": ["Purposive Communication"],
-        "categories": ["Vortex"]
+        "categories": ["Vortex"],
+        "img_urls": ["/images/students/francesca.jpg"],
+        "description": "Francesca Aldea is involved in Purposive Communication within the Vortex category."
     },
     {
         "name": "Carl Kristian Ortiz",
         "img": "/images/students/carl.jpg",
         "roles": ["PATHFIT 2"],
-        "categories": ["Vortex"]
+        "categories": ["Vortex"],
+        "img_urls": ["/images/students/carl.jpg"],
+        "description": "Carl Kristian Ortiz is participating in PATHFIT 2 and is involved in the Vortex category."
     },
     {
         "name": "Eaila Aguylo",
         "img": "/images/students/eaila.jpg",
         "roles": ["Bridging"],
-        "categories": ["Vortex"]
+        "categories": ["Vortex"],
+        "img_urls": ["/images/students/eaila.jpg"],
+        "description": "Eaila Aguylo works on Bridging projects and is part of the Vortex category."
     },
-
     {
         "name": "Aidan Tiu",
         "img": "/images/students/aidan.jpg",
         "roles": ["Developer"],
-        "categories": ["Lunar"]
+        "categories": ["Lunar"],
+        "img_urls": ["/images/students/aidan.jpg"],
+        "description": "Aidan Tiu is a Developer contributing to the Lunar category."
     }
 ]
