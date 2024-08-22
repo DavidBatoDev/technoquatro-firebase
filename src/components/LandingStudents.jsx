@@ -11,6 +11,7 @@ import Modal from '@mui/material/Modal';
 import IconButton from '@mui/material/IconButton';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
+import { bgcolor, display, height, maxWidth, width } from '@mui/system';
 
 const descriptionData = {
   "default": "United, we <strong>Celestial Kins</strong> form an unstoppable cosmic force achieving greatness beyond mere ideas.",
@@ -21,7 +22,7 @@ const descriptionData = {
   "Lunar": "The <span style='color: #FF4B4B; font-weight: bold;'>Lunar</span> are the celestial caretakers, ensuring the well-being of our cosmic community and fostering a culture of inclusivity and belonging."
 };
 
-const style = {
+const mobileStyle = {
   position: 'absolute',
   top: '50%',
   left: '50%',
@@ -35,13 +36,22 @@ const style = {
   textAlign: 'center',
 };
 
+const desktopStyle = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  height: '700px',
+  width: '900px',
+  maxWidth: 900,
+};
+
 const LandingStudents = () => {
   SwiperCore.use([Navigation]);
   const [category, setCategory] = useState('All');
   const [studentsData, setStudentsData] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [selectedStudent, setSelectedStudent] = useState(null);
-  const [currentImgIndex, setCurrentImgIndex] = useState(0);
 
   useEffect(() => {
     const fetchStudentsData = async () => {
@@ -158,7 +168,7 @@ const LandingStudents = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.3 }}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-8 mt-7"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-8 mt-7"
         >
           {membersToShow.map((student, index) => (
             <div
@@ -166,7 +176,7 @@ const LandingStudents = () => {
               key={index}
               className="flex flex-col items-center justify-center cursor-pointer"
             >
-              <div className="relative w-[170px] h-[170px] sm:w-[140px] sm:h-[140px] md:w-[170px] md:h-[170px] rounded-full overflow-hidden">
+              <div className="relative w-[140px] h-[140px] sm:w-[140px] sm:h-[140px] md:w-[170px] md:h-[170px] lg:w-[180px] lg:h-[180px] rounded-full overflow-hidden">
                 <img
                   src={student.img}
                   alt={student.name}
@@ -193,16 +203,17 @@ const LandingStudents = () => {
         </motion.div>
       </AnimatePresence>
 
-      {/* Modal */}
+      {/* Mobile Modal */}
       <Modal
         open={openModal}
         onClose={handleStudentModalClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
         closeAfterTransition
+        className='md:hidden'
       >
         <div 
-          style={style}
+          style={mobileStyle}
         >
         <div className='w-full flex text-[18px] md:text-[37.6px] font-semibold mb-2 text-white'>
           {selectedStudent?.name}
@@ -238,6 +249,78 @@ const LandingStudents = () => {
 
           <div className='w-full text-start text-white bg-black p-5 pt-0'>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt dignissimos accusamus distinctio sed quod sunt quia veritatis enim non repudiandae cupiditate ut ipsum, minima aut ipsam delectus qui perspiciatis minus!
+          </div>
+        </div>
+      </Modal>
+
+      {/* Desktop Modal */}
+      <Modal
+        open={openModal}
+        onClose={handleStudentModalClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+        closeAfterTransition
+        className='hidden md:flex'
+      >
+        <div style={desktopStyle}>
+          <div className='relative h-full flex flex-col'>
+            <div className=' w-full h-full flex'>
+              {/* image swiper */}
+              <div className='w-[60%]'>
+                <Swiper navigation style={{height: '100%'}}>
+                  {selectedStudent &&
+                    selectedStudent.img_urls.map((image, index) => (
+                      <SwiperSlide key={index} style={{height: '100%'}}>
+                        <div
+                          className="h-full w-full bg-cover bg-center bg-no-repeat"
+                          style={{
+                            background: `url(${image}) center center no-repeat`,
+                            backgroundSize: 'cover',
+                          }}
+                        />
+                      </SwiperSlide>
+                    ))}
+                </Swiper>
+              </div>
+
+              {/* comments and engagement */}
+              <div className='bg-black w-[40%] flex flex-col justify-between'>
+                <div>
+                  <div className='h-16 w-full p-5 flex items-center gap-2'>
+                    <img
+                      className='w-[40px] h-[40px] object-cover rounded-full' 
+                      src={selectedStudent?.img} alt="" />
+                      <p className='text-white font-bold'>{selectedStudent?.name}</p>
+                  </div>
+                  <div className='p-5 text-white'>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt dignissimos accusamus distinctio sed quod sunt quia veritatis enim non repudiandae cupiditate ut ipsum, minima aut ipsam delectus qui perspiciatis minus!
+                  </div>
+                  <div>
+                    {/* comments goes here */}
+                  </div>
+                </div>
+                <div className='flex flex-col'>
+                  <div>
+                    <IconButton>
+                      <FavoriteBorderIcon className='text-white' />
+                    </IconButton>
+                    <span className='text-white'>5</span>
+                    <IconButton>
+                      <ChatBubbleOutlineIcon className='text-white' />
+                    </IconButton>
+                    <span className='text-white'>5</span>
+                  </div>
+                  <div className='flex items-center'>
+                    <input
+                      className='w-full bg-black text-white p-2 outline-none' 
+                      type="text" placeholder='Add comment..' name="" id="" />
+                    <button className='text-white p-4'>Post</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            
           </div>
         </div>
       </Modal>

@@ -1,6 +1,7 @@
 import React from 'react';
 import LandingStudents from '../components/LandingStudents';
 import { IoMdMenu } from "react-icons/io";
+import Posts from '../components/Posts';
 
 const Landing = () => {
   return (
@@ -26,6 +27,7 @@ const Landing = () => {
         </div>
       </main>
       <LandingStudents />
+      <Posts/>
     </div>
   )
 }
