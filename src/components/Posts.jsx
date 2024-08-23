@@ -35,9 +35,7 @@ export default function Posts() {
   
     {/* for ipad */}
     <div 
-      style={{
-        background: 'linear-gradient(180deg, rgba(18, 17, 86, 1) 0%, rgba(26, 25, 34, 1) 100%)'
-      }}
+      style={{ backgroundImage: "url('/images/bg-2.png')" }}
       className='hidden md:flex lg:hidden h-full w-full justify-center p-10'>
         <Masonry columns={3} spacing={2}>
           {heights.map((height, index) => (
