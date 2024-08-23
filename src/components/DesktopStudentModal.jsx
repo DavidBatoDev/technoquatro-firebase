@@ -53,7 +53,7 @@ const DesktopStudentModal = ({ openModal, handleStudentModalClose, selectedStude
                   <div className='h-16 w-full p-5 flex items-center gap-2'>
                     <img
                       className='w-[40px] h-[40px] object-cover rounded-full'
-                      src={selectedStudent?.img} alt="" />
+                      src={selectedStudent?.img_urls[0]} alt="" />
                     <p className='text-white font-bold'>{selectedStudent?.name}</p>
                   </div>
                   <div className='flex'>

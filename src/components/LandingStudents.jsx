@@ -9,6 +9,8 @@ import CategoryNav from './CategoryNav';
 import StudentGrid from './StudentGrid';
 import MobileStudentModal from './MobileStudentModal';
 import DesktopStudentModal from './DesktopStudentModal';
+import {app, db} from '../firebase';
+import {collection, getDocs} from 'firebase/firestore';
 
 const descriptionData = {
   "default": "United, we <strong>Celestial Kins</strong> form an unstoppable cosmic force achieving greatness beyond mere ideas.",
@@ -29,13 +31,18 @@ const LandingStudents = () => {
   useEffect(() => {
     const fetchStudentsData = async () => {
       try {
-        const res = await fetch('./students.json');
-        const data = await res.json();
-        setStudentsData(data);
+        const studentsCollection = collection(db, 'studentsData');
+        const studentsSnapshot = await getDocs(studentsCollection);
+        const studentsList = studentsSnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        setStudentsData(studentsList);
       } catch (error) {
-        console.error('Error fetching JSON data:', error);
+        console.error('Error fetching data from Firestore:', error);
       }
     };
+
     fetchStudentsData();
   }, []);
 

@@ -8,7 +8,7 @@ const StudentCard = ({ student, category, handleStudentModalOpen }) => {
     >
       <div className="relative w-[140px] h-[140px] sm:w-[140px] sm:h-[140px] md:w-[170px] md:h-[170px] lg:w-[180px] lg:h-[180px] rounded-full overflow-hidden">
         <img
-          src={student?.img}
+          src={student?.img_urls[0]}
           alt={student?.name}
           className="object-cover w-full h-full"
         />

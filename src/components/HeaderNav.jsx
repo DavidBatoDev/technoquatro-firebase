@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { IoMdMenu } from 'react-icons/io';
 import ReusableModal from './ReusableModal';
-import { auth } from '../firebase'; // Import your Firebase configuration
+import { auth } from '../firebase';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
@@ -23,13 +23,13 @@ const HeaderNav = () => {
   const handleSignIn = async (e) => {
     e.preventDefault();
     try {
-      // Example authentication process, replace with your actual logic
-      const userCredential = await auth.signInWithEmailAndPassword(
-        `${studentNumber}@example.com`, // Example email format
-        studentBirthday // Using birthday as password
-      );
-      console.log('Signed in as:', userCredential.user);
-      handleClose(); // Close modal on successful sign-in
+      // const userCredential = await auth.signInWithEmailAndPassword(
+      //   `${studentNumber}@example.com`, // Example email format
+      //   studentBirthday // Using birthday as password
+      // );
+      // console.log('Signed in as:', userCredential.user);
+      console.log('Signed in as:', studentNumber, studentName, studentBirthday);
+      handleClose();
     } catch (error) {
       setError('Authentication failed. Please check your credentials.');
     }

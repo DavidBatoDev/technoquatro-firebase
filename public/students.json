@@ -1,7 +1,6 @@
 [
     {
         "name": "Joshua Mistal",
-        "img": "/images/students/joshua.jpg",
         "roles": ["President", "DM", "OOP"],
         "categories": ["Solar", "Vortex", "Lunar"],
         "img_urls": ["/images/students/joshua.jpg"],
@@ -9,7 +8,6 @@
     },
     {
         "name": "Karylle Quinto",
-        "img": "/images/students/karylle.jpg",
         "roles": ["Vice President", "CHF"],
         "categories": ["Solar", "Vortex"],
         "img_urls": ["/images/students/karylle.jpg"],
@@ -17,7 +15,6 @@
     },
     {
         "name": "Jasmin Ivy Fedilo",
-        "img": "/images/students/jasmin.jpg",
         "roles": ["Secretary"],
         "categories": ["Solar"],
         "img_urls": ["/images/students/jasmin.jpg"],
@@ -25,7 +22,6 @@
     },
     {
         "name": "Rachelle Cabrera",
-        "img": "/images/students/rachelle.jpg",
         "roles": ["Assistant Secretary"],
         "categories": ["Solar"],
         "img_urls": ["/images/students/rachelle.jpg"],
@@ -33,7 +29,6 @@
     },
     {
         "name": "Sweet Caroline Quiros",
-        "img": "/images/students/sweet-caroline.jpg",
         "roles": ["Treasurer"],
         "categories": ["Solar"],
         "img_urls": ["/images/students/sweet-caroline.jpg"],
@@ -41,7 +36,6 @@
     },
     {
         "name": "Alyssa Loque",
-        "img": "/images/students/alyssa.jpg",
         "roles": ["Auditor"],
         "categories": ["Solar"],
         "img_urls": ["/images/students/alyssa.jpg"],
@@ -49,7 +43,6 @@
     },
     {
         "name": "Dave Balbin",
-        "img": "/images/students/dave.jpg",
         "roles": ["PIO/PRO"],
         "categories": ["Solar"],
         "img_urls": ["/images/students/dave.jpg"],
@@ -57,7 +50,6 @@
     },
     {
         "name": "Lawrence Alferez",
-        "img": "/images/students/lawrence.jpg",
         "roles": ["PIO/PRO", "CWTS 2"],
         "categories": ["Solar", "Vortex"],
         "img_urls": ["/images/students/lawrence.jpg"],
@@ -65,7 +57,6 @@
     },
     {
         "name": "Ian Kylle Caones",
-        "img": "/images/students/ian.jpg",
         "roles": ["Graphics Specialists", "Calculus 2"],
         "categories": ["Nebula", "Vortex"],
         "img_urls": ["/images/students/ian.jpg"],
@@ -73,7 +64,6 @@
     },
     {
         "name": "David Bato-Bato",
-        "img": "/images/students/david.jpg",
         "roles": ["Social Media Developer", "Developer"],
         "categories": ["Nebula", "Lunar"],
         "img_urls": ["/images/students/david.jpg", "/images/students/jasmin.jpg"],
@@ -81,7 +71,6 @@
     },
     {
         "name": "Joanne Silmaro",
-        "img": "/images/students/joanne.jpg",
         "roles": ["Write-ups"],
         "categories": ["Nebula"],
         "img_urls": ["/images/students/joanne.jpg"],
@@ -89,7 +78,6 @@
     },
     {
         "name": "Japheth Tibor",
-        "img": "/images/students/japheth.jpg",
         "roles": ["Write-ups", "Physics for Engineers"],
         "categories": ["Nebula", "Vortex"],
         "img_urls": ["/images/students/japheth.jpg"],
@@ -97,7 +85,6 @@
     },
     {
         "name": "Marc Rohann Ching",
-        "img": "/images/students/marc.jpg",
         "roles": ["Social Media Moderator", "Discord Moderator"],
         "categories": ["Nebula", "Stardust"],
         "img_urls": ["/images/students/marc.jpg"],
@@ -105,7 +92,6 @@
     },
     {
         "name": "Edward Borboran",
-        "img": "/images/students/edward.jpg",
         "roles": ["Social Media Moderator", "Discord Moderator"],
         "categories": ["Nebula", "Stardust"],
         "img_urls": ["/images/students/edward.jpg"],
@@ -113,7 +99,6 @@
     },
     {
         "name": "Nicole Marquez",
-        "img": "/images/students/nicole.jpg",
         "roles": ["Documentation Officer"],
         "categories": ["Stardust"],
         "img_urls": ["/images/students/nicole.jpg"],
@@ -121,7 +106,6 @@
     },
     {
         "name": "Shai Federick Base",
-        "img": "/images/students/shai.jpg",
         "roles": ["Documentation Officer"],
         "categories": ["Stardust"],
         "img_urls": ["/images/students/shai.jpg"],
@@ -129,7 +113,6 @@
     },
     {
         "name": "Xian Patanao",
-        "img": "/images/students/xian.jpg",
         "roles": ["Irregular Student Affairs Assistant"],
         "categories": ["Vortex"],
         "img_urls": ["/images/students/xian.jpg"],
@@ -137,7 +120,6 @@
     },
     {
         "name": "Jhastine Breta",
-        "img": "/images/students/jhastine.jpg",
         "roles": ["Engineering Data Analysis"],
         "categories": ["Vortex"],
         "img_urls": ["/images/students/jhastine.jpg"],
@@ -145,7 +127,6 @@
     },
     {
         "name": "Francesca Aldea",
-        "img": "/images/students/francesca.jpg",
         "roles": ["Purposive Communication"],
         "categories": ["Vortex"],
         "img_urls": ["/images/students/francesca.jpg"],
@@ -153,7 +134,6 @@
     },
     {
         "name": "Carl Kristian Ortiz",
-        "img": "/images/students/carl.jpg",
         "roles": ["PATHFIT 2"],
         "categories": ["Vortex"],
         "img_urls": ["/images/students/carl.jpg"],
@@ -161,7 +141,6 @@
     },
     {
         "name": "Eaila Aguylo",
-        "img": "/images/students/eaila.jpg",
         "roles": ["Bridging"],
         "categories": ["Vortex"],
         "img_urls": ["/images/students/eaila.jpg"],
@@ -169,7 +148,6 @@
     },
     {
         "name": "Aidan Tiu",
-        "img": "/images/students/aidan.jpg",
         "roles": ["Developer"],
         "categories": ["Lunar"],
         "img_urls": ["/images/students/aidan.jpg"],
