@@ -4,9 +4,15 @@ import ReusableModal from './ReusableModal';
 import { auth } from '../firebase';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
 
 const HeaderNav = () => {
   const [open, setOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const [studentNumber, setStudentNumber] = useState('');
   const [studentName, setStudentName] = useState('');
   const [studentBirthday, setStudentBirthday] = useState('');
@@ -20,14 +26,16 @@ const HeaderNav = () => {
     setOpen(false);
   };
 
+  const toggleDrawer = (open) => (event) => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+    setDrawerOpen(open);
+  };
+
   const handleSignIn = async (e) => {
     e.preventDefault();
     try {
-      // const userCredential = await auth.signInWithEmailAndPassword(
-      //   `${studentNumber}@example.com`, // Example email format
-      //   studentBirthday // Using birthday as password
-      // );
-      // console.log('Signed in as:', userCredential.user);
       console.log('Signed in as:', studentNumber, studentName, studentBirthday);
       handleClose();
     } catch (error) {
@@ -35,11 +43,23 @@ const HeaderNav = () => {
     }
   };
 
+  const drawerList = () => (
+    <List sx={{ width: 250 }}>
+      {['Home', 'Officers', 'Login'].map((text, index) => (
+        <ListItem key={text} disablePadding>
+          <ListItemButton onClick={text === 'Login' ? handleOpen : undefined}>
+            <ListItemText className='font-semibold' primary={text} />
+          </ListItemButton>
+        </ListItem>
+      ))}
+    </List>
+  );
+
   return (
     <header className='fixed top-0 w-full z-10'>
       <nav className='w-full flex justify-between items-center px-10 py-1 md:px-[30px] bg-white bg-opacity-70'>
         <img src="/images/yellow-logo.png" alt="" className='h-[50px] my-[10px]' />
-        <IoMdMenu className='flex md:hidden text-black text-[30px] cursor-pointer' />
+        <IoMdMenu className='flex md:hidden text-black text-[30px] cursor-pointer' onClick={toggleDrawer(true)} />
         <ul className='md:flex gap-[15px] hidden'>
           <li>
             <a href='#' className='text-blue-500 font-bold text-[18px]'>Home</a>
@@ -53,6 +73,21 @@ const HeaderNav = () => {
         </ul>
       </nav>
 
+      <SwipeableDrawer
+        anchor='right'
+        open={drawerOpen}
+        onClose={toggleDrawer(false)}
+        onOpen={toggleDrawer(true)}
+        PaperProps={{
+          sx: {
+            backgroundColor: 'rgba(255, 255, 255, 0.9)', // 50% transparency
+          }
+        }}
+      >
+        {drawerList()}
+      </SwipeableDrawer>
+
+      {/* Modal for signin */}
       <ReusableModal 
         open={open} 
         handleClose={handleClose} 
@@ -105,7 +140,6 @@ const HeaderNav = () => {
           </Button>
         </form>
         <div className='mt-3'>
-          {/* continue as a guest message */}
           <p>
             Continue as a guest?{' '}
             <a href='#' className='mt-3 text-blue-500 font-bold'>Click here</a>
