@@ -39,7 +39,7 @@ const LandingStudents = () => {
         }));
         setStudentsData(studentsList);
       } catch (error) {
-        console.error('Error fetching data from Firestore:', error);
+        console.log('Error fetching data from Firestore:', error);
       }
     };
 

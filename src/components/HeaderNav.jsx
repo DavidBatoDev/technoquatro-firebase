@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import { IoMdMenu } from 'react-icons/io';
-import ReusableModal from './ReusableModal';
-import { auth } from '../firebase';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import SignInModal from './SignInModal';
+import { useSelector } from 'react-redux';
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase';
 
 const HeaderNav = () => {
   const [signInOpen, setSignInOpen] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const {user} = useSelector(state => state.user);
 
   const handleOpen = () => {
     setSignInOpen(true);
@@ -30,19 +30,42 @@ const HeaderNav = () => {
     setDrawerOpen(open);
   };
 
+  const drawerList = () => {
+    let authenticationState = 'Login';
+    if (user?.email) {
+      authenticationState = 'Logout';
+    }
 
+    const handleLogout = async () => {
+      try {
+        await signOut(auth);
+        handleClose();
+      } catch (error) {
+        console.log('Error signing out:', error);
+      }
+    }
 
-  const drawerList = () => (
-    <List sx={{ width: 250 }}>
-      {['Home', 'Officers', 'Login'].map((text, index) => (
-        <ListItem key={text} disablePadding>
-          <ListItemButton onClick={text === 'Login' ? handleOpen : undefined}>
-            <ListItemText className='font-semibold' primary={text} />
-          </ListItemButton>
-        </ListItem>
-      ))}
-    </List>
-  );
+    const handleOnClick = (text) => {
+      if (text === 'Login') {
+        handleOpen();
+      } else if (text === 'Logout') {
+        handleLogout();
+      }
+    }
+
+    return (
+      <List sx={{ width: 250 }}>
+        {['Home', 'Officers', authenticationState].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton onClick={() => handleOnClick(text)}>
+              <ListItemText className='font-semibold' primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+
+    )
+  };
 
   return (
     <header className='fixed top-0 w-full z-10'>
@@ -56,9 +79,16 @@ const HeaderNav = () => {
           <li>
             <a href='#' className='text-blue-500 font-bold text-[18px]'>Officers</a>
           </li>
-          <li>
-            <div onClick={handleOpen} className='cursor-pointer text-blue-500 font-bold text-[18px]'>Login</div>
-          </li>
+          {user?.email ? (
+            <li>
+              <a href='#' className='text-blue-500 font-bold text-[18px]'>Profile</a>
+            </li>
+          ) :
+          (
+            <li>
+              <div onClick={handleOpen} className='cursor-pointer text-blue-500 font-bold text-[18px]'>Login</div>
+            </li>
+          )}
         </ul>
       </nav>
 

@@ -2,20 +2,49 @@ import React, {useState} from 'react'
 import ReusableModal from './ReusableModal'
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
+import { useSelector } from 'react-redux'
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import {
+    loginStart,
+    loginSuccess,
+    loginFailure,
+} from '../redux/userSlice/userSlice'
+import { auth, db } from '../firebase'
+import { useDispatch } from 'react-redux'
+import { getDoc, doc } from 'firebase/firestore'
+
 
 const SignInModal = ({open, handleClose}) => {
+    const dispatch = useDispatch();
     const [studentNumber, setStudentNumber] = useState('');
     const [studentName, setStudentName] = useState('');
     const [studentBirthday, setStudentBirthday] = useState('');
-    const [error, setError] = useState('');
-
+    const { error } = useSelector((state) => state.user);
+  
     const handleSignIn = async (e) => {
         e.preventDefault();
         try {
-          console.log('Signed in as:', studentNumber, studentName, studentBirthday);
-          handleClose();
+            if (!studentNumber || !studentName || !studentBirthday) {
+                return dispatch(loginFailure('Please fill in all fields'));
+            }
+            const studentEmail = `${studentNumber}@example.com`;
+            dispatch(loginStart());
+            const userCredential = await signInWithEmailAndPassword(auth, studentEmail, studentBirthday);
+            const user = userCredential.user
+            if (!user) {
+                return dispatch(loginFailure('Invalid credentials'));
+            }
+            // get the user data from the database
+            const userDocRef = doc(db, 'users', user.uid);
+            const userDoc = await getDoc(userDocRef);
+            if (!userDoc.exists()) {
+                return dispatch(loginFailure('User not found'));
+            }
+            dispatch(loginSuccess(userDoc.data()));
+            handleClose();
         } catch (error) {
-          setError('Authentication failed. Please check your credentials.');
+            console.log('Error signing in:', error);
+            dispatch(loginFailure(error.message));
         }
       };
 

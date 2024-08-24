@@ -23,6 +23,9 @@ export const userSlice = createSlice({
             state.loading = false
             state.error = action.payload
         },
+        setUserData: (state, action) => {
+            state.user = action.payload
+        },
         registerStart: (state) => {
             state.loading = true
             state.error = null
@@ -54,6 +57,7 @@ export const {
     registerFailure,
     clearError,
     logout,
+    setUserData,
 } = userSlice.actions
 
 export default  userSlice.reducer
