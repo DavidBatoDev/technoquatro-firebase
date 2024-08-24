@@ -9,21 +9,18 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
+import SignInModal from './SignInModal';
 
 const HeaderNav = () => {
-  const [open, setOpen] = useState(false);
+  const [signInOpen, setSignInOpen] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [studentNumber, setStudentNumber] = useState('');
-  const [studentName, setStudentName] = useState('');
-  const [studentBirthday, setStudentBirthday] = useState('');
-  const [error, setError] = useState('');
 
   const handleOpen = () => {
-    setOpen(true);
+    setSignInOpen(true);
   };
 
   const handleClose = () => {
-    setOpen(false);
+    setSignInOpen(false);
   };
 
   const toggleDrawer = (open) => (event) => {
@@ -33,15 +30,7 @@ const HeaderNav = () => {
     setDrawerOpen(open);
   };
 
-  const handleSignIn = async (e) => {
-    e.preventDefault();
-    try {
-      console.log('Signed in as:', studentNumber, studentName, studentBirthday);
-      handleClose();
-    } catch (error) {
-      setError('Authentication failed. Please check your credentials.');
-    }
-  };
+
 
   const drawerList = () => (
     <List sx={{ width: 250 }}>
@@ -80,7 +69,7 @@ const HeaderNav = () => {
         onOpen={toggleDrawer(true)}
         PaperProps={{
           sx: {
-            backgroundColor: 'rgba(255, 255, 255, 0.9)', // 50% transparency
+            backgroundColor: 'rgba(255, 255, 255, 0.9)',
           }
         }}
       >
@@ -88,64 +77,7 @@ const HeaderNav = () => {
       </SwipeableDrawer>
 
       {/* Modal for signin */}
-      <ReusableModal 
-        open={open} 
-        handleClose={handleClose} 
-        title='Are you a techno student?'
-      >
-        <form onSubmit={handleSignIn}>
-          <TextField
-            id='studentNumber'
-            label='Student Number'
-            type='text'
-            fullWidth
-            margin='normal'
-            variant='outlined'
-            value={studentNumber}
-            onChange={(e) => setStudentNumber(e.target.value)}
-            required
-          />
-          <TextField
-            id='studentName'
-            label='Student Name'
-            type='text'
-            fullWidth
-            margin='normal'
-            variant='outlined'
-            value={studentName}
-            onChange={(e) => setStudentName(e.target.value)}
-            required
-          />
-          <TextField
-            id='studentBirthday'
-            label='Student Birthday'
-            type='date'
-            fullWidth
-            margin='normal'
-            variant='outlined'
-            InputLabelProps={{ shrink: true }}
-            value={studentBirthday}
-            onChange={(e) => setStudentBirthday(e.target.value)}
-            required
-          />
-          {error && <p style={{ color: 'red', marginTop: '8px' }}>{error}</p>}
-          <Button
-            type='submit'
-            variant='contained'
-            color='primary'
-            fullWidth
-            sx={{ mt: 2 }}
-          >
-            Sign In
-          </Button>
-        </form>
-        <div className='mt-3'>
-          <p>
-            Continue as a guest?{' '}
-            <a href='#' className='mt-3 text-blue-500 font-bold'>Click here</a>
-          </p>
-        </div>
-      </ReusableModal>
+      <SignInModal open={signInOpen} handleClose={handleClose} />
     </header>
   );
 };
