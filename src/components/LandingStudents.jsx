@@ -3,14 +3,14 @@ import SwiperCore from 'swiper';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css/bundle';
 import 'react-slideshow-image/dist/styles.css';
-
 import MainDescription from './MainDescription';
 import CategoryNav from './CategoryNav';
 import StudentGrid from './StudentGrid';
 import MobileStudentModal from './MobileStudentModal';
 import DesktopStudentModal from './DesktopStudentModal';
 import {app, db} from '../firebase';
-import {collection, getDocs} from 'firebase/firestore';
+import {collection, onSnapshot} from 'firebase/firestore';
+import EditMobileStudentModal from './EditMobileStudentModal';
 
 const descriptionData = {
   "default": "United, we <strong>Celestial Kins</strong> form an unstoppable cosmic force achieving greatness beyond mere ideas.",
@@ -26,24 +26,25 @@ const LandingStudents = () => {
   const [category, setCategory] = useState('All');
   const [studentsData, setStudentsData] = useState([]);
   const [openModal, setOpenModal] = useState(false);
+  const [openEditModal, setOpenEditModal] = useState(false);
   const [selectedStudent, setSelectedStudent] = useState(null);
 
-  useEffect(() => {
-    const fetchStudentsData = async () => {
-      try {
-        const studentsCollection = collection(db, 'studentsData');
-        const studentsSnapshot = await getDocs(studentsCollection);
-        const studentsList = studentsSnapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data()
-        }));
-        setStudentsData(studentsList);
-      } catch (error) {
-        console.log('Error fetching data from Firestore:', error);
-      }
-    };
+  const handleOpenEditModal = () => {
+    setOpenEditModal(true);
+    setOpenModal(false);
+  }
 
-    fetchStudentsData();
+  const handleCloseEditModal = () => {
+    setOpenEditModal(false);
+    setOpenModal(true);
+  }
+
+  useEffect(() => {
+    const unsub = onSnapshot(collection(db, 'studentsData'), (snapshot) => {
+      setStudentsData(snapshot.docs.map((doc) => doc.data()));
+    });
+
+    return unsub;
   }, []);
 
   const handleCategoryClick = (category) => {
@@ -100,7 +101,17 @@ const LandingStudents = () => {
         openModal={openModal} 
         handleStudentModalClose={handleStudentModalClose} 
         selectedStudent={selectedStudent} 
+        handleOpenEditModal={handleOpenEditModal}
       />
+
+      {/* Edit Mobile Modal */}
+      {selectedStudent && (
+        <EditMobileStudentModal 
+          openEditModal={openEditModal}
+          handleEditModalClose={handleCloseEditModal}
+          selectedStudent={selectedStudent}
+        />
+      )}
 
       {/* Desktop Modal */}
       <DesktopStudentModal 
