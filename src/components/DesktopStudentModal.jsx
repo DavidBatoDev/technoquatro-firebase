@@ -4,8 +4,13 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import CloseIcon from '@mui/icons-material/Close';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
+import EditIcon from '@mui/icons-material/Edit';
+import { useSelector } from 'react-redux';
 
 const DesktopStudentModal = ({ openModal, handleStudentModalClose, selectedStudent }) => {
+  const { user } = useSelector((state) => state.user);
+
+
   const desktopStyle = {
     position: 'absolute',
     top: '50%',
@@ -70,15 +75,24 @@ const DesktopStudentModal = ({ openModal, handleStudentModalClose, selectedStude
                 </div>
               </div>
               <div className='flex flex-col'>
-                <div>
-                  <IconButton>
-                    <FavoriteBorderIcon className='text-white' />
-                  </IconButton>
-                  <span className='text-white'>5</span>
-                  <IconButton>
-                    <ChatBubbleOutlineIcon className='text-white' />
-                  </IconButton>
-                  <span className='text-white'>5</span>
+                <div className='flex justify-between px-2'>
+                  <div className='flex items-center'>
+                    <IconButton>
+                      <FavoriteBorderIcon className='text-white' />
+                    </IconButton>
+                    <span className='text-white'>5</span>
+                    <IconButton>
+                      <ChatBubbleOutlineIcon className='text-white' />
+                    </IconButton>
+                    <span className='text-white'>5</span>
+                  </div>
+                  {selectedStudent?.student_number === user?.studentNumber && (
+                    <div className='flex items-center'>
+                      <IconButton>
+                        <EditIcon className='text-white' />
+                      </IconButton>
+                    </div>
+                  )}
                 </div>
                 <div className='flex items-center'>
                   <input

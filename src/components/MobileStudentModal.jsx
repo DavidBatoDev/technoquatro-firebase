@@ -4,8 +4,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import CloseIcon from '@mui/icons-material/Close';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
+import EditIcon from '@mui/icons-material/Edit';
+import { useSelector } from 'react-redux';
 
 const MobileStudentModal = ({ openModal, handleStudentModalClose, selectedStudent }) => {
+  const {user} = useSelector((state) => state.user);
+
   const mobileStyle = {
     position: 'absolute',
     top: '50%',
@@ -52,19 +56,29 @@ const MobileStudentModal = ({ openModal, handleStudentModalClose, selectedStuden
               </SwiperSlide>
             ))}
         </Swiper>
-        <div className='flex w-full h-full bg-black p-3 pb-0'>
-          <div>
-            <IconButton>
-              <FavoriteBorderIcon className='text-white' />
-            </IconButton>
-            <span className='text-white'>5</span>
+        <div className='flex justify-betwee w-full h-full bg-black p-3 pb-0'>
+          <div className='flex n w-full'>
+            <div>
+              <IconButton>
+                <FavoriteBorderIcon className='text-white' />
+              </IconButton>
+              <span className='text-white'>5</span>
+            </div>
+            <div>
+              <IconButton>
+                <ChatBubbleOutlineIcon className='text-white' />
+              </IconButton>
+              <span className='text-white'>5</span>
+            </div>
+
           </div>
-          <div>
-            <IconButton>
-              <ChatBubbleOutlineIcon className='text-white' />
-            </IconButton>
-            <span className='text-white'>5</span>
-          </div>
+          {selectedStudent?.student_number === user?.studentNumber && (
+            <div className='flex items-center'>
+              <IconButton>
+                <EditIcon className='text-white' />
+              </IconButton>
+            </div>
+          )}
         </div>
 
         <div className='w-full text-start text-white bg-black p-5 pt-0'>

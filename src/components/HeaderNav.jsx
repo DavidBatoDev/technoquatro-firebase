@@ -81,7 +81,7 @@ const HeaderNav = () => {
           </li>
           {user?.email ? (
             <li>
-              <a href='#' className='text-blue-500 font-bold text-[18px]'>Profile</a>
+              <a href='#' className='text-blue-500 font-bold text-[18px]'>Logout</a>
             </li>
           ) :
           (
