@@ -11,6 +11,7 @@ import DesktopStudentModal from './DesktopStudentModal';
 import {app, db} from '../firebase';
 import {collection, onSnapshot} from 'firebase/firestore';
 import EditMobileStudentModal from './EditMobileStudentModal';
+import EditDesktopStudentModal from './EditDesktopStudentModal';
 
 const descriptionData = {
   "default": "United, we <strong>Celestial Kins</strong> form an unstoppable cosmic force achieving greatness beyond mere ideas.",
@@ -118,7 +119,17 @@ const LandingStudents = () => {
         openModal={openModal} 
         handleStudentModalClose={handleStudentModalClose} 
         selectedStudent={selectedStudent} 
+        handleOpenEditModal={handleOpenEditModal}
       />
+
+      {/* Edit Desktop Modal */}
+      {selectedStudent && (
+        <EditDesktopStudentModal 
+          openEditModal={openEditModal}
+          handleEditModalClose={handleCloseEditModal}
+          selectedStudent={selectedStudent}
+        />
+      )}
     </main>
   );
 };

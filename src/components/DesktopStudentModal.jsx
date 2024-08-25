@@ -7,7 +7,7 @@ import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import EditIcon from '@mui/icons-material/Edit';
 import { useSelector } from 'react-redux';
 
-const DesktopStudentModal = ({ openModal, handleStudentModalClose, selectedStudent }) => {
+const DesktopStudentModal = ({ openModal, handleStudentModalClose, selectedStudent, handleOpenEditModal }) => {
   const { user } = useSelector((state) => state.user);
 
 
@@ -68,7 +68,7 @@ const DesktopStudentModal = ({ openModal, handleStudentModalClose, selectedStude
                   </div>
                 </div>
                 <div className='p-5 text-white'>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt dignissimos accusamus distinctio sed quod sunt quia veritatis enim non repudiandae cupiditate ut ipsum, minima aut ipsam delectus qui perspiciatis minus!
+                  <p>{selectedStudent?.description}</p>
                 </div>
                 <div>
                   {/* comments goes here */}
@@ -88,7 +88,7 @@ const DesktopStudentModal = ({ openModal, handleStudentModalClose, selectedStude
                   </div>
                   {selectedStudent?.student_number === user?.studentNumber && (
                     <div className='flex items-center'>
-                      <IconButton>
+                      <IconButton onClick={handleOpenEditModal}>
                         <EditIcon className='text-white' />
                       </IconButton>
                     </div>
