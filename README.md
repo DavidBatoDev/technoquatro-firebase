@@ -89,5 +89,8 @@ npm run dev
 ![image](https://github.com/user-attachments/assets/ee20abbf-aba1-4395-924c-20bd78b02841)
 ![image](https://github.com/user-attachments/assets/f8993992-ec90-48ee-b175-119397bd3a5c)
 
+### Post Modal Component
+![image](https://github.com/user-attachments/assets/fb6b49f9-b923-40cb-9d7c-07500c7126af)
+
 ### Add a post Modal
 ![image](https://github.com/user-attachments/assets/7740e6c9-8a4c-48c1-b16a-0ccc220556ed)
