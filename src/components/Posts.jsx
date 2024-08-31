@@ -5,7 +5,9 @@ import Masonry from '@mui/lab/Masonry';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import DesktopPostModal from './DesktopPostModal';
-import MobilePostModal from './MobilePostModal'; // Import MobilePostModal
+import MobilePostModal from './MobilePostModal';
+import DesktopAddPostModal from './DesktopAddPostModal';
+import MobileAddPostModal from './MobileAddPostModal'; // Import the Mobile Add Post Modal
 
 const dummyPosts = [
   {
@@ -85,17 +87,26 @@ const PostDescription = styled('p')(({ theme }) => ({
 }));
 
 export default function Posts() {
-  const [openModal, setOpenModal] = useState(false);
+  const [openPostModal, setOpenPostModal] = useState(false);
+  const [openAddPostModal, setOpenAddPostModal] = useState(false);
   const [selectedPost, setSelectedPost] = useState(null);
 
   const handlePostClick = (post) => {
     setSelectedPost(post);
-    setOpenModal(true);
+    setOpenPostModal(true);
   };
 
-  const handleCloseModal = () => {
-    setOpenModal(false);
+  const handleClosePostModal = () => {
+    setOpenPostModal(false);
     setSelectedPost(null);
+  };
+
+  const handleOpenAddPostModal = () => {
+    setOpenAddPostModal(true);
+  };
+
+  const handleCloseAddPostModal = () => {
+    setOpenAddPostModal(false);
   };
 
   return (
@@ -108,6 +119,7 @@ export default function Posts() {
         <Button
           variant="contained"
           startIcon={<AddIcon />}
+          onClick={handleOpenAddPostModal} // Open the Add Post Modal
           sx={{
             backgroundColor: '#FFFFFF',
             color: '#6C63FF',
@@ -173,22 +185,31 @@ export default function Posts() {
         </Masonry>
       </div>
 
-      {/* Conditional Rendering of Modals */}
+      {/* Conditional Rendering of Post Modals */}
       {selectedPost && (
         <>
           <DesktopPostModal 
-            openModal={openModal} 
-            handleClose={handleCloseModal} 
+            openModal={openPostModal} 
+            handleClose={handleClosePostModal} 
             selectedPost={selectedPost} 
           />
           <MobilePostModal 
-            openModal={openModal} 
-            handleClose={handleCloseModal} 
+            openModal={openPostModal} 
+            handleClose={handleClosePostModal} 
             selectedPost={selectedPost} 
           />
         </>
       )}
+
+      {/* Conditional Rendering of Add Post Modals */}
+      <DesktopAddPostModal
+        open={openAddPostModal}
+        handleClose={handleCloseAddPostModal}
+      />
+      <MobileAddPostModal
+        open={openAddPostModal}
+        handleClose={handleCloseAddPostModal}
+      />
     </div>
   );
 }
-E
