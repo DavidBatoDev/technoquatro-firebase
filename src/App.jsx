@@ -26,7 +26,6 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path='/feed' element={<h1>Feed</h1>} />
       </Routes>
     </Router>
   )
